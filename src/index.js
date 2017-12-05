@@ -2,13 +2,13 @@
  * Exercise 1: add the following functionality:
  *   lose coins - coins reset to 0
  *   decrement time - time decrements by 1
+ *   move left and right
  */
 
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
 import styles from './styles';
-import throttle from 'lodash/throttle';
 
 // reducer setup
 const initialState = {
@@ -16,7 +16,7 @@ const initialState = {
   score: 0,
   world: 1,
   level: 1,
-  left: 200,
+  marioPosition: 200,
   levelTime: 300,
   timeLeft: 300,
 };
@@ -35,7 +35,14 @@ const store = createStore(reducer);
 
 // our React app
 const SuperMario = () => {
-  const { coins, score, world, level, timeLeft, left } = store.getState();
+  const {
+    coins,
+    score,
+    world,
+    level,
+    timeLeft,
+    marioPosition,
+  } = store.getState();
   return (
     <div>
       <div style={styles.container}>
@@ -45,7 +52,9 @@ const SuperMario = () => {
         </div>
         <div style={styles.header}>
           <div>&nbsp;</div>
-          <div>💰x{coins}</div>
+          <div>
+            <span style={styles.coin} />x{coins}
+          </div>
         </div>
         <div style={styles.header}>
           <div>WORLD</div>
@@ -56,7 +65,7 @@ const SuperMario = () => {
           <div>{timeLeft}</div>
         </div>
       </div>
-      <div style={{ ...styles.mario, left: left }} />
+      <div style={{ ...styles.mario, left: marioPosition }} />
       <div style={styles.block} />
       <div style={styles.buttonGroup}>
         <button
@@ -71,6 +80,12 @@ const SuperMario = () => {
         </button>
         <button className="btn btn-info" type="button">
           Decrement time
+        </button>
+        <button className="btn btn-info" type="button">
+          Move left
+        </button>
+        <button className="btn btn-info" type="button">
+          Move right
         </button>
       </div>
     </div>
