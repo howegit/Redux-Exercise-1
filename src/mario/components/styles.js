@@ -2,13 +2,14 @@ const styles = {
   container: {
     fontFamily: 'vt323',
     backgroundColor: '#5c94fc',
-    height: 600,
+    height: 300,
     fontSize: 30,
     color: 'white',
     display: 'flex',
     justifyContent: 'space-around',
     paddingTop: 10,
     marginBottom: 10,
+    position: 'relative',
   },
   header: {
     position: 'relative',
@@ -16,6 +17,7 @@ const styles = {
   buttonGroup: {
     display: 'flex',
     justifyContent: 'space-around',
+    margin: 10,
   },
   mario: {
     background:
@@ -23,7 +25,7 @@ const styles = {
     height: 95,
     width: 95,
     position: 'absolute',
-    top: 450,
+    top: 150,
   },
   block: {
     background:
@@ -31,7 +33,7 @@ const styles = {
     height: 56,
     width: '100%',
     position: 'absolute',
-    top: 545,
+    top: 245,
   },
   coin: {
     background:
